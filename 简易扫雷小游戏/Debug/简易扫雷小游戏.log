@@ -1,0 +1,3 @@
+﻿  mine.c
+D:\Git代码\cpp.practice\简易扫雷小游戏\mine.c(30,15): warning C4244:  “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  简易扫雷小游戏.vcxproj -> D:\Git代码\cpp.practice\简易扫雷小游戏\Debug\简易扫雷小游戏.exe
