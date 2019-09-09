@@ -1,0 +1,9 @@
+﻿  源.c
+D:\Git代码\cpp.practice\C语言几个库函数的实现\源.c(112,23): warning C4133:  “=”: 从“char *”到“const int *”的类型不兼容
+D:\Git代码\cpp.practice\C语言几个库函数的实现\源.c(121,18): warning C4133:  “<=”: 从“const int *”到“void *”的类型不兼容
+D:\Git代码\cpp.practice\C语言几个库函数的实现\源.c(127,24): warning C4133:  “=”: 从“char *”到“const int *”的类型不兼容
+D:\Git代码\cpp.practice\C语言几个库函数的实现\源.c(133,31): warning C4133:  “=”: 从“char *”到“const int *”的类型不兼容
+D:\Git代码\cpp.practice\C语言几个库函数的实现\源.c(138,24): warning C4133:  “=”: 从“char *”到“const int *”的类型不兼容
+D:\Git代码\cpp.practice\C语言几个库函数的实现\源.c(138,24): warning C4133: D:\Git代码\cpp.practice\C语言几个库函数的实现\源.c(67) : warning C4715: “Mystrstr”: 不是所有的控件路径都返回值
+MSVCRTD.lib(exe_main.obj) : error LNK2019: 无法解析的外部符号 _main，该符号在函数 "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) 中被引用
+D:\Git代码\cpp.practice\C语言几个库函数的实现\Debug\C语言几个库函数的实现.exe : fatal error LNK1120: 1 个无法解析的外部命令

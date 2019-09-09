@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C语言几个库函数的实现", "C语言几个库函数的实现.vcxproj", "{CEBC09BD-1ACC-4812-9A2D-54011E05335E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEBC09BD-1ACC-4812-9A2D-54011E05335E}.Debug|x64.ActiveCfg = Debug|x64
+		{CEBC09BD-1ACC-4812-9A2D-54011E05335E}.Debug|x64.Build.0 = Debug|x64
+		{CEBC09BD-1ACC-4812-9A2D-54011E05335E}.Debug|x86.ActiveCfg = Debug|Win32
+		{CEBC09BD-1ACC-4812-9A2D-54011E05335E}.Debug|x86.Build.0 = Debug|Win32
+		{CEBC09BD-1ACC-4812-9A2D-54011E05335E}.Release|x64.ActiveCfg = Release|x64
+		{CEBC09BD-1ACC-4812-9A2D-54011E05335E}.Release|x64.Build.0 = Release|x64
+		{CEBC09BD-1ACC-4812-9A2D-54011E05335E}.Release|x86.ActiveCfg = Release|Win32
+		{CEBC09BD-1ACC-4812-9A2D-54011E05335E}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {096A37B8-4E47-4789-9B51-E41C25A35BD5}
+	EndGlobalSection
+EndGlobal
