@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdio>
 #include <iomanip>
 using namespace std;
 #define e     0.00000001
@@ -124,7 +123,9 @@ void LieZhuXiaoYuan()
 		}
 		PrintProc(k);//输出中间计算过程
 		if (k < n - 1)
+		{
 			continue;
+		}
 		else
 		{
 			if (abs(a[n][n]) < e)
