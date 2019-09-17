@@ -1,61 +1,49 @@
 #include <iostream>
+#include <cstdlib>
 #include <iomanip>
 using namespace std;
-#define e     0.00000001
-#define maxn 50
+
+#define e 0.00000001
+#define MAX 50
 
 int n;//规模n
-double a[maxn][maxn];//系数矩阵
-double b[maxn];//b矩阵
-double m[maxn][maxn];//中间变量矩阵
-double x[maxn];//最终解
-int    H = 1;//扩大H被结算（优化）
+double a[MAX][MAX];//系数矩阵
+double b[MAX];//b矩阵
+double x[MAX];//解
 
-void read()
+void Read()
 {
 	cout << "请输入系数矩阵规模 n: ";
 	cin >> n;
-	cout << "--------------------------------" << endl;
-	cout << "请输入系数矩阵，如：" << endl;
-	cout << "1.1348 3.8326 1.1651 3.4017" << endl;
-	cout << "0.5301 1.7875 2.5330 1.5435" << endl;
-	cout << "3.4129 4.9317 8.7643 1.3142" << endl;
-	cout << "1.2371 4.9998 10.6721 0.0147" << endl;
-	cout << "--------------------------------" << endl;
+	cout << "请输入"<<n<<"*"<<n<<"系数矩阵：" << endl;
 	for (int i = 1; i <= n; i++)
 	{
 		for (int j = 1; j <= n; j++)
 		{
 			cin >> a[i][j];
-			a[i][j] *= H;
 		}
 	}
-	cout << "--------------------------------" << endl;
-	cout << "请输入b矩阵，如：" << endl;
-	cout << "9.5342 6.3941 18.4231 16.9237" << endl;
-	cout << "--------------------------------" << endl;
+	cout << "请输入b矩阵：" << endl;
 	for (int i = 1; i <= n; i++)
 	{
 		cin >> b[i];
-		b[i] *= H;
 	}
 }
 
 /*
-中间矩阵输出
-参数：消元次数
+中间矩阵输出，参数：消元次数
 */
-void PrintProc(int cases)
+void MPrint(int m)
 {
 	cout << endl;
-	cout << "第" << cases << "次消元结果如下：" << endl;
+	cout << "第" << m << "次消元结果如下：" << endl;
 	for (int i = 1; i <= n; i++)
 	{
 		for (int j = 1; j <= n; j++)
 		{
-			cout << setw(10) << a[i][j] << ' ';
+			cout  <<setw(10)<< a[i][j] << ' ';
 		}
-		cout << setw(10) << b[i] << endl;
+		cout  << setw(10)<<b[i] << endl;
 	}
 	cout << "-------------------------------------------------------------------" << endl;
 }
@@ -77,19 +65,19 @@ void Print()
 /*
 列主消元
 */
-void LieZhuXiaoYuan()
+void XiaoYuan()
 {
 	for (int k = 1; k < n; k++)
 	{
 		//选主元[这一列的绝对值最大值]
 		double ab_max = -1;
-		int  max_ik;
+		int  max;
 		for (int i = k; i <= n; i++)
 		{
 			if (abs(a[i][k]) > ab_max)
 			{
 				ab_max = abs(a[i][k]);
-				max_ik = i;
+				max = i;
 			}
 		}
 		//交换行处理[先判断是否为0矩阵]
@@ -98,17 +86,17 @@ void LieZhuXiaoYuan()
 			cout << "det A=0\n";
 			break;
 		}
-		else if (max_ik != k)
+		else if (max != k)
 		{//是否是当前行，不是交换
 			double temp;
 			for (int j = 1; j <= n; j++)
 			{
-				temp = a[max_ik][j];
-				a[max_ik][j] = a[k][j];
+				temp = a[max][j];
+				a[max][j] = a[k][j];
 				a[k][j] = temp;
 			}
-			temp = b[max_ik];
-			b[max_ik] = b[k];
+			temp = b[max];
+			b[max] = b[k];
 			b[k] = temp;
 		}
 		//消元计算
@@ -121,7 +109,7 @@ void LieZhuXiaoYuan()
 			}
 			b[i] -= a[i][k] * b[k];
 		}
-		PrintProc(k);//输出中间计算过程
+		MPrint(k);//输出中间计算过程
 		if (k < n - 1)
 		{
 			continue;
@@ -154,7 +142,7 @@ void LieZhuXiaoYuan()
 
 int main()
 {
-	read();
-	LieZhuXiaoYuan();
+	Read();
+	XiaoYuan();
 	return 0;
 }
