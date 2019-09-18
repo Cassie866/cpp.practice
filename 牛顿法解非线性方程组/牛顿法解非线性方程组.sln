@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "牛顿法解非线性方程组", "牛顿法解非线性方程组.vcxproj", "{EE9FA23E-7A84-4EFA-9503-5C86E51E49EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE9FA23E-7A84-4EFA-9503-5C86E51E49EA}.Debug|x64.ActiveCfg = Debug|x64
+		{EE9FA23E-7A84-4EFA-9503-5C86E51E49EA}.Debug|x64.Build.0 = Debug|x64
+		{EE9FA23E-7A84-4EFA-9503-5C86E51E49EA}.Debug|x86.ActiveCfg = Debug|Win32
+		{EE9FA23E-7A84-4EFA-9503-5C86E51E49EA}.Debug|x86.Build.0 = Debug|Win32
+		{EE9FA23E-7A84-4EFA-9503-5C86E51E49EA}.Release|x64.ActiveCfg = Release|x64
+		{EE9FA23E-7A84-4EFA-9503-5C86E51E49EA}.Release|x64.Build.0 = Release|x64
+		{EE9FA23E-7A84-4EFA-9503-5C86E51E49EA}.Release|x86.ActiveCfg = Release|Win32
+		{EE9FA23E-7A84-4EFA-9503-5C86E51E49EA}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {439EA526-2C05-4C59-BD06-07D89D3E29D6}
+	EndGlobalSection
+EndGlobal
