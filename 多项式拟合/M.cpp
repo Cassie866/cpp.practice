@@ -57,7 +57,7 @@ int main()
 	{
 		cin >> Y[i];
 	}
-	cout << "请输入拟合次数：" << endl;
+	cout << "请输入拟合次数：";
 	cin >> m;
 	for (i = 0; i < n; i++)
 	{
@@ -98,8 +98,8 @@ int main()
 			C[i] += E[i][j] * B[j];
 		}
 	}
-	cout << "拟合后的" << m << "次多项式系数：" << endl;
-	for (i = 0; i >= 0; i--)
+	cout << "拟合后的多项式系数：" << endl;
+	for (i = m; i >= 0; i--)
 	{
 		cout << C[i] << "  ";
 	}
