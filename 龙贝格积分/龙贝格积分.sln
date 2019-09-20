@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "龙贝格积分", "龙贝格积分.vcxproj", "{73306DFC-1561-4AAC-84D5-64857617BBEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73306DFC-1561-4AAC-84D5-64857617BBEB}.Debug|x64.ActiveCfg = Debug|x64
+		{73306DFC-1561-4AAC-84D5-64857617BBEB}.Debug|x64.Build.0 = Debug|x64
+		{73306DFC-1561-4AAC-84D5-64857617BBEB}.Debug|x86.ActiveCfg = Debug|Win32
+		{73306DFC-1561-4AAC-84D5-64857617BBEB}.Debug|x86.Build.0 = Debug|Win32
+		{73306DFC-1561-4AAC-84D5-64857617BBEB}.Release|x64.ActiveCfg = Release|x64
+		{73306DFC-1561-4AAC-84D5-64857617BBEB}.Release|x64.Build.0 = Release|x64
+		{73306DFC-1561-4AAC-84D5-64857617BBEB}.Release|x86.ActiveCfg = Release|Win32
+		{73306DFC-1561-4AAC-84D5-64857617BBEB}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86C16825-6C3F-4BF1-8D37-72B021C84599}
+	EndGlobalSection
+EndGlobal
