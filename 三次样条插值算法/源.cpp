@@ -1,8 +1,9 @@
 #include<iostream>
+#include<iomanip> 
 using namespace std;
 #define MAX 4
 
-double* diff(double X[], int n)
+double *Diff(double X[], int n)
 {
 	int i = 0;
 	double* H = NULL;
@@ -12,7 +13,7 @@ double* diff(double X[], int n)
 	return H;
 }
 
-double* divide(double Y[], int N, double H[])
+double* Divide(double Y[], int N, double H[])
 {
 	int i = 0;
 	double* D = NULL;
@@ -22,7 +23,8 @@ double* divide(double Y[], int N, double H[])
 	return D;
 }
 
-int main() {
+int main() 
+{
 	double X[MAX] = { 0,1,2,3 },
 		Y[MAX] = { 0,0.5,2.0,1.5 },
 		S[MAX][MAX] = { 0 },
@@ -33,9 +35,9 @@ int main() {
 		C[MAX - 2] = { 0 };
 	double dx0 = 0.2, dxn = 1;
 	double* H = NULL, * D = NULL, * U = NULL;
-	cout << "求解过点(0,0.0), (1,0.5), (2,2.0)和(3,1.5) 且一阶导数边界条件S'(0)=0.2 和S'(2)=1 的三次压紧样条曲线" << endl;
-	H = diff(X, MAX);
-	D = divide(diff(Y, MAX), N, H);
+	cout << "求解过点(0,0.0), (1,0.5), (2,2.0)和(3,1.5) 且一阶导数边界条件S'(0)=0.2 和S'(2)=1 的三样条曲线" << endl;
+	H = Diff(X, MAX);
+	D = Divide(Diff(Y, MAX), N, H);
 	for (i = 1; i < N - 2; i++)
 	{
 		A[i] = H[i + 1];
@@ -48,7 +50,7 @@ int main() {
 	{
 		C[i] = H[i + 1];
 	}
-	U = diff(D, N);
+	U = Diff(D, N);
 	for (i = 0; i < N; i++)
 	{
 		U[i] = U[i] * 6;
@@ -77,12 +79,12 @@ int main() {
 		S[k][2] = D[k] - H[k] * (2 * M[k] + M[k + 1]) / 6;
 		S[k][3] = Y[k];
 	}
-	cout << "求得的三次紧压样条曲线的矩阵S为：" << endl;
+	cout << "求得的三样条曲线的矩阵S为：" << endl;
 	for (i = 0; i < MAX - 1; i++)
 	{
 		for (k = 0; k < MAX; k++)
 		{
-			cout << S[i][k] << " ";
+			cout <<setw(10)<< S[i][k] << " ";
 		}
 		cout << endl;
 	}

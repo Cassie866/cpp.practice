@@ -1,3 +1,3 @@
 ﻿  niudun.cpp
-D:\Git代码\cpp.practice\牛顿法解非线性方程组\niudun.cpp(147,9): warning C4101:  “j”: 未引用的局部变量
+D:\Git代码\cpp.practice\牛顿法解非线性方程组\niudun.cpp(180,9): warning C4101:  “j”: 未引用的局部变量
   牛顿法解非线性方程组.vcxproj -> D:\Git代码\cpp.practice\牛顿法解非线性方程组\Debug\牛顿法解非线性方程组.exe

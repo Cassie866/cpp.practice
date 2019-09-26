@@ -3,10 +3,10 @@
 #define N 2  //非线性方程组中方程个数、未知量个数
 #define Max  50  //最大迭代次数
 using namespace std;
-
 const int N2 = 2 * N;
 
-void FF(double xx[N], double yy[N])//计算向量函数的因变量向量yy[N]
+//计算向量函数的因变量向量yy[N]
+void FF(double xx[N], double yy[N])
 {
 	double x, y;
 	int i;
@@ -23,7 +23,8 @@ void FF(double xx[N], double yy[N])//计算向量函数的因变量向量yy[N]
 	cout << endl;
 }
 
-void FFjacobian(double xx[N], double yy[N][N])//计算雅克比矩阵yy[N][N]
+//计算雅克比矩阵yy[N][N]
+void FFjacobian(double xx[N], double yy[N][N])
 {
 	double x, y;
 	int i, j;
@@ -45,7 +46,8 @@ void FFjacobian(double xx[N], double yy[N][N])//计算雅克比矩阵yy[N][N]
 	cout << endl;
 }
 
-void Inv_jacobian(double yy[N][N], double inv[N][N])//计算雅克比矩阵的逆矩阵inv
+//计算雅克比矩阵的逆矩阵inv
+void Inv_jacobian(double yy[N][N], double inv[N][N])
 {
 	double aug[N][N2], L;
 	int i, j, k;
@@ -149,7 +151,8 @@ void Inv_jacobian(double yy[N][N], double inv[N][N])//计算雅克比矩阵的逆矩阵inv
 	cout << endl;
 }
 
-void newdundiedai(double x0[N], double inv[N][N], double y0[N], double x1[N])//由近似解向量x0计算近似解向量x1
+//由近似解向量x0计算近似解向量x1
+void newdundiedai(double x0[N], double inv[N][N], double y0[N], double x1[N])
 {
 	int i, j;
 	double sum = 0;
