@@ -1,96 +1,123 @@
 #include<iostream>
-#include<iomanip> 
+#include<iomanip>
 using namespace std;
-#define MAX 4
 
-double *Diff(double X[], int n)
+const int  MAX = 50;
+//变量设置：x为各点横坐标；y为各点纵坐标；h为步长
+float x[MAX], y[MAX], h[MAX];
+float c[MAX], a[MAX], fxym[MAX];
+
+//差分函数
+float f(int x1, int x2, int x3)
 {
-	int i = 0;
-	double* H = NULL;
-	H = (double*)malloc((n - 1) * sizeof(double));
-	for (i = 1; i <= n - 1; i++)
-		H[i - 1] = X[i] - X[i - 1];
-	return H;
+	float a = (y[x3] - y[x2]) / (x[x3] - x[x2]);
+	float b = (y[x2] - y[x1]) / (x[x2] - x[x1]);
+	return (a - b) / (x[x3] - x[x1]);
 }
 
-double* Divide(double Y[], int N, double H[])
+//用追赶法求解出弯矩向量M
+void cal_m(int n)
 {
-	int i = 0;
-	double* D = NULL;
-	D = (double*)malloc(N * sizeof(double));
-	for (i = 0; i < N; i++)
-		D[i] = Y[i] / H[i];
-	return D;
+	float B[MAX];
+	B[0] = c[0] / 2;
+	for (int i = 1; i < n; i++)
+	{
+		B[i] = c[i] / (2 - a[i] * B[i - 1]);
+	}
+	fxym[0] = fxym[0] / 2;
+	for (int i = 1; i <= n; i++)
+	{
+		fxym[i] = (fxym[i] - a[i] * fxym[i - 1]) / (2 - a[i] * B[i - 1]);
+	}
+	for (int i = n - 1; i >= 0; i--)
+	{
+		fxym[i] = fxym[i] - B[i] * fxym[i + 1];
+	}
 }
-
-int main() 
+void Print(int n)
 {
-	double X[MAX] = { 0,1,2,3 },
-		Y[MAX] = { 0,0.5,2.0,1.5 },
-		S[MAX][MAX] = { 0 },
-		temp = 0.0, M[MAX] = { 0 };
-	int N = MAX - 1, i = 0, k = 0;
-	double A[MAX - 3] = { 0 },
-		B[MAX - 2] = { 0 },
-		C[MAX - 2] = { 0 };
-	double dx0 = 0.2, dxn = 1;
-	double* H = NULL, * D = NULL, * U = NULL;
-	cout << "求解过点(0,0.0), (1,0.5), (2,2.0)和(3,1.5) 且一阶导数边界条件S'(0)=0.2 和S'(2)=1 的三样条曲线" << endl;
-	H = Diff(X, MAX);
-	D = Divide(Diff(Y, MAX), N, H);
-	for (i = 1; i < N - 2; i++)
+	for (int i = 0; i < n; i++)
 	{
-		A[i] = H[i + 1];
-	}
-	for (i = 0; i < N - 1; i++)
-	{
-		B[i] = 2 * (H[i] + H[i + 1]);
-	}
-	for (i = 1; i < N - 1; i++)
-	{
-		C[i] = H[i + 1];
-	}
-	U = Diff(D, N);
-	for (i = 0; i < N; i++)
-	{
-		U[i] = U[i] * 6;
-	}
-	B[0] = B[0] - H[0] / 2;
-	U[0] = U[0] - 3 * (D[0] - dx0);
-	B[N - 2] = B[N - 2] - H[N - 1] / 2;
-	U[N - 2] = U[N - 2] - 3 * (dxn - D[N - 1]);
-	for (k = 2; k <= N - 1; k++)
-	{
-		temp = A[k - 2] / B[k - 2];
-		B[k - 1] = B[k - 1] - temp * C[k - 2];
-		U[k - 1] = U[k - 1] - temp * U[k - 2];
-	}
-	M[N - 1] = U[N - 2] / B[N - 2];
-	for (k = N - 2; k >= 1; k--)
-	{
-		M[k] = (U[k - 1] - C[k - 1] * M[k + 1]) / B[k - 1];
-	}
-	M[0] = 3 * (D[0] - dx0) / H[0] - M[0] / 2;
-	M[N] = 3 * (dxn - D[N - 1]) / H[N - 1] - M[N - 1] / 2;
-	for (k = 0; k <= N - 1; k++)
-	{
-		S[k][0] = (M[k + 1] - M[k]) / (6 * H[k]);
-		S[k][1] = M[k] / 2;
-		S[k][2] = D[k] - H[k] * (2 * M[k] + M[k + 1]) / 6;
-		S[k][3] = Y[k];
-	}
-	cout << "求得的三样条曲线的矩阵S为：" << endl;
-	for (i = 0; i < MAX - 1; i++)
-	{
-		for (k = 0; k < MAX; k++)
+		cout << i + 1 << ": (" << x[i] << " , " << x[i + 1] << ")\n" << "\t";
+		cout << "S" << i + 1 << "=";
+		float t = fxym[i] / (6 * h[i]);
+		if (t > 0)
 		{
-			cout <<setw(10)<< S[i][k] << " ";
+			cout << -t << "*(x-" << x[i + 1] << ")^3";
+		}
+		else
+		{
+			cout << -t << "*(x-" << x[i + 1] << ")^3";
+		}
+
+		t = fxym[i + 1] / (6 * h[i]);
+		if (t > 0)
+		{
+			cout << " + " << t << "*(x-" << x[i] << ")^3";
+		}
+		else
+		{
+			cout << " - " << t << "*(x-" << x[i] << ")^3";
+		}
+		cout << "\n\t";
+		t = (y[i] - fxym[i] * h[i] * h[i] / 6) / h[i];
+		if (t > 0)
+		{
+			cout << "- " << t << "*(x-" << x[i + 1] << ")";
+		}
+		else
+		{
+			cout << "- " << -t << "*(x-" << x[i + 1] << ")";
+		}
+		t = (y[i + 1] - fxym[i + 1] * h[i] * h[i] / 6) / h[i];
+		if (t > 0)
+		{
+			cout << " + " << t << "*(x-" << x[i] << ")";
+		}
+		else
+		{
+			cout << " - " << -t << "*(x-" << x[i] << ")";
 		}
 		cout << endl;
 	}
-	for (i = 0; i < N; i++)
+	cout << endl;
+}
+int main()
+{
+	int n, i; 
+	cout << "请输入点的个数:";
+	cin >> n;
+	for (i = 0; i <= n; i++)
 	{
-		cout << "y=" << S[i][0] << "*x^3" << "+"<< S[i][1] << "*x^2" << "+"<< S[i][2] << "*x" << "+"<< S[i][3] << endl;
+		cout << "请输入X" << i << ':';
+		cin >> x[i];
+		cout << "请输入Y" << i << ':';
+		cin >> y[i];
 	}
+	for (i = 0; i < n; i++) //求步长
+	{
+		h[i] = x[i + 1] - x[i];
+	}
+	float f0, f1;
+	cout << "请输入两端的一阶导数：";
+	cin >> f0 >> f1;
+	c[0] = 1; a[n] = 1;
+	fxym[0] = 6 * ((y[1] - y[0]) / (x[1] - x[0]) - f0) / h[0];
+	fxym[n] = 6 * (f1 - (y[n] - y[n - 1]) / (x[n] - x[n - 1])) / h[n - 1];
+
+	for (i = 1; i < n; i++)
+	{
+		fxym[i] = 6 * f(i - 1, i, i + 1);
+	}
+	for (i = 1; i < n; i++)
+	{
+		a[i] = h[i - 1] / (h[i] + h[i - 1]);
+		c[i] = 1 - a[i];
+	}
+	a[n] = h[n - 1] / (h[n - 1] + h[n]);
+	cal_m(n);
+	cout << "输出三次样条插值函数：" << endl;
+	Print(n);
 	return 0;
 }
+
