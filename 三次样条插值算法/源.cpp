@@ -15,7 +15,7 @@ float f(int x1, int x2, int x3)
 	return (a - b) / (x[x3] - x[x1]);
 }
 
-//用追赶法求解出弯矩向量M
+//追赶法
 void cal_m(int n)
 {
 	float B[MAX];
@@ -34,6 +34,7 @@ void cal_m(int n)
 		fxym[i] = fxym[i] - B[i] * fxym[i + 1];
 	}
 }
+
 void Print(int n)
 {
 	for (int i = 0; i < n; i++)
@@ -82,6 +83,7 @@ void Print(int n)
 	}
 	cout << endl;
 }
+
 int main()
 {
 	int n, i; 
