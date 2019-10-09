@@ -1,4 +1,3 @@
-#define  _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <conio.h>
 #include <iomanip>
@@ -7,7 +6,6 @@
 #include <fstream>
 using namespace std;
 #define SIZE 1000
-
 class Student
 {
 private:
@@ -326,6 +324,7 @@ int main()
 		case 7:
 			s.Load();
 			break;
+
 		}
 	}
 	return 0;
