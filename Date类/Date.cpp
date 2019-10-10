@@ -6,18 +6,18 @@ class Date
 public:
 	Date(int year = 2000, int month = 1, int day = 1); //构造函数
 	Date(const Date& d); //拷贝构造函数
-	int GetDay(int month, int year); //某月份的天数
-	Date& operator = (const Date& d);//赋值运算符重载
+	int GetDay(int month, int year); //获取某年某月份的天数
+	Date& operator = (const Date& d);//赋值运算符重载函数
 	Date& operator += (int days);
 	Date& operator -= (int days);
 	Date operator + (int days);
 	Date operator - (int days);
 	int operator - (const Date& d);//两个日期相差的天数
-	Date& operator ++ ();//前置++
-	Date operator ++ (int);//后置++
+	Date& operator ++ ();//前置++       
+	Date operator ++ (int);//后置++      
 	Date& operator -- ();//前置--
 	Date operator -- (int);//后置--
-	bool operator > (const Date& d)const;//判断两个日期的大小
+	bool operator > (const Date& d)const; //判断两个日期的大小
 	bool operator >= (const Date& d)const;
 	bool operator < (const Date& d)const;
 	bool operator <= (const Date& d)const;
@@ -34,6 +34,7 @@ int Date::GetDay(int month, int year)
 {
 	static int days[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	int day = days[month - 1];
+	//如果是闰年的二月，加一天
 	if (month == 2)
 	{
 		if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
@@ -46,7 +47,7 @@ int Date::GetDay(int month, int year)
 
 Date::Date(int year, int month, int day)
 {
-	if (year <= 0 || month <= 0 || month > 12 || day <= 0 || day > GetDay(month, year))
+	if (year < 0 || month < 0 || month > 12 || day < 1 || day > GetDay(month, year))
 	{
 		cout << "输入不合法，已设置为默认值: 2000-1-1" << endl;
 		_year = 2000;
@@ -169,11 +170,13 @@ Date Date:: operator ++ (int)
 	return d;
 }
 
+//前置--
 Date& Date::operator -- ()
 {
 	return *this -= 1;
 }
 
+//后置--
 Date Date::operator -- (int)
 {
 	Date  d(*this);
@@ -221,7 +224,7 @@ bool Date::operator <= (const Date& d)const
 
 bool Date::operator == (const Date& d)const
 {
-	return _year == d._year && _month == d._month && _day == d._day;
+	return (_year == d._year && _month == d._month && _day == d._day);
 }
 
 bool Date::operator != (const Date& d)const
@@ -262,7 +265,6 @@ void test()
 
 	d2 = d1;
 	d2.DisPlay();
-
 }
 
 int main()
