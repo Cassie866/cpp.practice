@@ -26,7 +26,8 @@ public:
 	}
 
 	void ReadBin(ServerInfo & info) 
-	{         // 这里注意使用二进制方式打开读        
+	{        
+		// 这里注意使用二进制方式打开读        
 		ifstream ifs(_configfile, ifstream::out | ifstream::binary);       
 		ifs.read((char*)&info, sizeof(ServerInfo));       
 		ifs.close();    
@@ -60,7 +61,7 @@ int main()
 	ConfigManager cfgMgr;
 	ServerInfo wtinfo;    
 	ServerInfo rdinfo;   
-	strcpy(wtinfo._ip, "127.0.0.1");  
+	strcpy(wtinfo._ip, "192.168.1.1");  
 	wtinfo._port = 80;
 
 	// 二进制读写   
